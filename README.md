@@ -8,8 +8,6 @@ audio is decoded natively.
 **No game data is included.** You need your own copy of the game: the launcher
 imports it from your disc image (`.iso`) and verifies it before you can play.
 
-<p align="center"><img src="docs/img/launcher-play.png" alt="Forza2Launcher" width="720"></p>
-
 ## Status
 
 | | |
