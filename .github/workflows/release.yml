@@ -1,0 +1,42 @@
+# Build the player zip on Windows and attach it to a GitHub release.
+# Push a tag like v0.1.0 to run it. Uses the committed generated/ code - the
+# game itself is never present on the runner.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        shell: cmd
+        run: build.bat release
+
+      - name: Package
+        shell: pwsh
+        run: |
+          $version = if ($env:GITHUB_REF_TYPE -eq "tag") { $env:GITHUB_REF_NAME.TrimStart("v") } else { "dev" }
+          tools\package_release.ps1 -Version $version
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Forza2-Native-windows-x64
+          path: dist/*.zip*
+
+      - name: Publish release
+        if: github.ref_type == 'tag'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create $env:GITHUB_REF_NAME (Get-ChildItem dist\*.zip, dist\*.zip.sha256).FullName --title "Forza 2 Native $env:GITHUB_REF_NAME" --notes-file docs/PLAYERS.md

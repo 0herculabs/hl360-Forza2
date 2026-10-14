@@ -1,0 +1,31 @@
+# Forza Motorsport 2 (4D5307EA) - port settings: what the title needs to run.
+# Ships next to forza2.exe. The player's choices (profile, game folder,
+# graphics, controls) live in forza2.user.toml, written by Forza2Launcher and
+# loaded after this file (Forza2App::OnConfigurePaths).
+
+# Only warnings and errors; the launcher deletes the log after a clean exit,
+# so a log file only stays around when something went wrong.
+log_level = "warning"
+
+# Twice the SDK default (8) of queued audio frames: absorbs hitches instead of
+# crackling. ~5 ms per frame, so ~85 ms of buffer.
+audio_maxqframes = 16
+
+# Async pipeline compilation skips presents and draws untextured placeholders
+# on every title the CrownPark ports tried; start synchronous.
+async_shader_compilation = false
+
+# Engines routinely issue fetches the strict path rejects.
+gpu_allow_invalid_fetch_constants = true
+
+# Answer system UI (device selector, sign-in) with defaults. The profile comes
+# from the launcher, so there is nothing to choose in-game.
+headless = true
+
+# The Xenos GPU backend (D3D12 on Windows, Vulkan elsewhere); CMake stages
+# rexgpu-xenos*.dll next to the exe. Without it every Vd* call is ignored.
+gpu_plugin = "xenos"
+
+# Keyboard as a virtual pad unless the launcher says otherwise. A controller
+# works either way.
+mnk_mode = true

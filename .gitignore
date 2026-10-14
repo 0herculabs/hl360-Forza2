@@ -1,0 +1,23 @@
+# Game data - never commit. Players import their own copy.
+/assets/
+/game/
+*.iso
+*.xex
+
+# Build output, packages, downloaded SDK
+/out/
+/dist/
+/_sdk/
+
+# Per-player and per-run files
+forza2.user.toml
+/run*.log
+logs/
+launcher-headless.log
+
+# Box art: copyrighted, kept local (the launcher reads it at runtime)
+cover.png
+cover.bmp
+
+# Scripted-input pad state (tools/pad.ps1)
+/pad.txt
