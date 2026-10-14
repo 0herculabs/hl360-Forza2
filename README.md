@@ -1,16 +1,33 @@
+<div align="center">
+
 # Forza Motorsport 2 — Native PC Port
 
-Play Forza Motorsport 2 (Xbox 360, 2007) natively on Windows. The game's
-PowerPC code is statically recompiled ahead of time to C++ and compiled for
-x86-64 — no CPU emulation, no JIT. Graphics run on Direct3D 12, audio is
-decoded natively.
+**A static recompilation of the Xbox 360 racing game for modern Windows PCs.**
 
-> **No game files are included.** You need your own original copy of
-> Forza Motorsport 2 for Xbox 360 (a disc image, `.iso`).
+[![Latest release](https://img.shields.io/github/v/release/0herculabs/hl360-Forza2?style=for-the-badge&label=Download)](../../releases/latest)
+[![Platform](https://img.shields.io/badge/Platform-Windows_x64-0078D4?style=for-the-badge&logo=windows&logoColor=white)](#requirements)
+[![Game data](https://img.shields.io/badge/Game_files-Not_included-EF4444?style=for-the-badge)](#legal-notice)
+[![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/post/Forza-Motorsport-2-native-on-PC-E2Q428PZ5Y)
 
-**[⬇ Download the latest release](../../releases/latest)** ·
-**[☕ Support on Ko-fi](https://ko-fi.com/post/Forza-Motorsport-2-native-on-PC-E2Q428PZ5Y)** ·
-**[Changelog](CHANGELOG.md)**
+[Download](../../releases/latest) · [Getting started](#getting-started) · [Changelog](CHANGELOG.md) · [Report an issue](../../issues)
+
+</div>
+
+Play *Forza Motorsport 2* (Xbox 360, 2007) natively on Windows. The game's
+PowerPC code is statically recompiled ahead of time into C++ and then compiled
+for x86-64: there is no CPU emulation and no JIT compiler. Graphics are
+rendered through Direct3D 12 and audio is decoded natively.
+
+> [!IMPORTANT]
+> No copyrighted game files are included. You must provide your own original
+> European or American Xbox 360 copy of *Forza Motorsport 2* as a disc image.
+
+> [!WARNING]
+> Version 0.3.0 is playable but still a work in progress. Menus and videos are
+> functional, while exhibition races and Free Run can hold 60 FPS; 120 Hz race
+> output is also available on sufficiently fast hardware. Career mode,
+> split-screen, and DLC content still need broader testing. Xbox Live is not
+> available.
 
 <p align="center">
   <img src="docs/img/game-race-mugello.jpg" alt="Racing at Mugello" width="49%">
@@ -21,7 +38,19 @@ decoded natively.
   <img src="docs/img/game-car-select.jpg" alt="Car selection" width="49%">
 </p>
 
----
+## Highlights
+
+- Native x86-64 execution through static PowerPC-to-C++ recompilation.
+- Direct3D 12 rendering with internal resolutions up to 4K.
+- 60 Hz and optional 120 Hz race modes.
+- Anisotropic filtering, MSAA, FXAA, AMD FSR, and AMD CAS.
+- Xbox-compatible controllers and fully remappable keyboard controls.
+- Named local profiles with separate save data.
+- Built-in ISO extraction and SHA-256 file verification.
+- Shader precompilation to reduce first-visit stutter.
+- European and American releases supported.
+- Limited Edition bonus-disc DLC and Project Forza Plus 2 integration.
+- English, Spanish, French, German, and Italian game languages.
 
 ## Requirements
 
@@ -31,7 +60,8 @@ decoded natively.
 - Your own Forza Motorsport 2 disc image (`.iso`), European or American
   release (title ID `4D5307EA`)
 
-Nothing else needs installing: the Visual C++ runtime is bundled.
+No additional runtime needs to be installed; the Visual C++ runtime is bundled
+with each release.
 
 ## Getting started
 
@@ -79,7 +109,7 @@ needs a 120 Hz monitor and a fast CPU. Menus run at half the rate, as on the
 Xbox 360. 144 Hz is not offered: at that rate races wait two refreshes per
 frame and ran slower than at 60 Hz.
 
-## Downloadable content (Limited Edition bonus disc)
+## Limited Edition bonus-disc content
 
 The bonus disc of the Limited Edition carries the 8 premium DLC packs (car
 packs, Road America and Motegi). With the game installed, go to **Install** →
@@ -215,7 +245,7 @@ If you enjoy the project and want it to keep improving, you can support it on
 **[Ko-fi](https://ko-fi.com/post/Forza-Motorsport-2-native-on-PC-E2Q428PZ5Y)**.
 Thank you! 🏁
 
-## Legal
+## Legal notice
 
 This repository contains no game assets: no executables, disc images,
 textures, audio or video. `generated/` is a machine translation of the game's
@@ -232,32 +262,3 @@ download.
 - [Xenia](https://github.com/xenia-project/xenia) — the emulation research ReXGlue builds on
 - [XenonRecomp](https://github.com/hedge-dev/XenonRecomp) — static recompilation for Xbox 360
 - [CrownParkComputing/Xbox360-Native-Ports](https://github.com/CrownParkComputing/Xbox360-Native-Ports) — the approach this port follows
-
----
-
-### 🇪🇸 En español
-
-Juega a Forza Motorsport 2 (Xbox 360) de forma nativa en Windows.
-**No incluye archivos del juego**: necesitas tu propia copia original (`.iso`),
-europea o americana.
-
-1. Descarga el `.zip` de [Releases](../../releases) y descomprímelo.
-2. Abre `Forza2Launcher.exe` y pulsa **ES** (arriba a la derecha) para ponerlo
-   en castellano.
-3. En **Instalación** → **Elegir ISO e importar**, elige tu imagen de disco.
-4. En **Perfiles**, crea tu perfil.
-5. Pulsa **JUGAR**.
-
-- **Frecuencia**: en Gráficos, 60 Hz (60 FPS fijos en carrera) o 120 Hz
-  (monitor de 120 Hz y CPU rápida).
-- **DLC del disco extra de la edición limitada**: con el juego instalado, en
-  **Instalación** → **Contenido descargable** → **Importar ISO del disco
-  extra**. Cada perfil instala los 8 packs la próxima vez que juega.
-- **Project Forza Plus 2** (solo versión americana): en la pestaña **Forza
-  Plus 2**, instala el `.zip` del mod y después el de la actualización. Desde
-  ahí se cambia el modo de trayectoria, la IA y el campo de visión de cada
-  cámara, y se desinstala. El mod ya incluye los coches y circuitos DLC.
-
-Requisitos: Windows 10/11 de 64 bits, GPU con Direct3D 12 y unos 5 GB libres.
-Apoya el proyecto en
-[Ko-fi](https://ko-fi.com/post/Forza-Motorsport-2-native-on-PC-E2Q428PZ5Y). ¡Gracias!
